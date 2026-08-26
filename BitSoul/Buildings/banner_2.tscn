@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://ihlfbs2vij2l"]
+
+[ext_resource type="Texture2D" uid="uid://cprxpf18j21t0" path="res://Tilemap/monochrome_tilemap_transparent_packed.png" id="1_tle68"]
+[ext_resource type="Script" path="res://Buildings/banner_2.gd" id="1_w5mp1"]
+[ext_resource type="FontFile" uid="uid://cm377h44ylfvs" path="res://QuinqueFive.otf" id="2_8f6si"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jh10"]
+atlas = ExtResource("1_tle68")
+region = Rect2(256, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k7xh"]
+atlas = ExtResource("1_tle68")
+region = Rect2(272, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mio2i"]
+atlas = ExtResource("1_tle68")
+region = Rect2(256, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qt5ot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jh10")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k7xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mio2i")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8etcu"]
+size = Vector2(14, 13.5)
+
+[sub_resource type="Animation" id="Animation_dqph8"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_s2hd6"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Move"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2wbv"]
+_data = {
+"Idle": SubResource("Animation_dqph8"),
+"Move": SubResource("Animation_s2hd6")
+}
+
+[node name="Banner2" type="Area2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_w5mp1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qt5ot")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_8etcu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k2wbv")
+}
+autoplay = "Idle"
+
+[node name="BannerText2" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="BannerText2"]
+
+[node name="Label" type="Label" parent="BannerText2"]
+offset_left = -48.0
+offset_top = -45.0
+offset_right = 48.0
+offset_bottom = -8.0
+theme_override_fonts/font = ExtResource("2_8f6si")
+theme_override_font_sizes/font_size = 5
+text = "Расчитывай
+расстояние
+прыжка"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,140 @@
+[gd_scene load_steps=20 format=3 uid="uid://lklfjq64gs37"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_8cjk6"]
+[ext_resource type="FontFile" uid="uid://cm377h44ylfvs" path="res://QuinqueFive.otf" id="2_xwdc2"]
+[ext_resource type="Texture2D" uid="uid://dg4lo5lfu7fg1" path="res://panel-border-027.png" id="2_yumm2"]
+[ext_resource type="PackedScene" uid="uid://bwpjxf1w2v87l" path="res://bg.tscn" id="3_tll0y"]
+[ext_resource type="Script" path="res://bg.gd" id="4_jto4x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7f282"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmsnc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64hrx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vunmc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qegn8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w06gf"]
+texture = ExtResource("2_yumm2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jbf8u"]
+sources/0 = SubResource("TileSetAtlasSource_w06gf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfyte"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s48b"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l38f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwxna"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08678"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6mdf"]
+texture = ExtResource("2_yumm2")
+1:0/0 = 0
+0:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nitjo"]
+sources/0 = SubResource("TileSetAtlasSource_h6mdf")
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_8cjk6")
+
+[node name="ButtMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Play" type="Button" parent="ButtMenu"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 306.0
+offset_right = 856.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_xwdc2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_7f282")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bmsnc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_64hrx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vunmc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qegn8")
+text = "Играть"
+
+[node name="TileMap" type="TileMap" parent="ButtMenu/Play"]
+tile_set = SubResource("TileSet_jbf8u")
+format = 2
+layer_0/name = "main"
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 22, 131072, 0, 393216, 0, 2, 393238, 131072, 2, 327680, 0, 1, 262144, 0, 1, 196608, 0, 1, 131072, 0, 1, 65536, 0, 1, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0, 14, 65536, 0, 15, 65536, 0, 16, 65536, 0, 17, 65536, 0, 18, 65536, 0, 19, 65536, 0, 20, 65536, 0, 21, 65536, 0, 327702, 131072, 1, 262166, 131072, 1, 196630, 131072, 1, 131094, 131072, 1, 65558, 131072, 1, 393217, 65536, 2, 393218, 65536, 2, 393219, 65536, 2, 393220, 65536, 2, 393221, 65536, 2, 393222, 65536, 2, 393223, 65536, 2, 393224, 65536, 2, 393225, 65536, 2, 393226, 65536, 2, 393227, 65536, 2, 393228, 65536, 2, 393229, 65536, 2, 393230, 65536, 2, 393231, 65536, 2, 393232, 65536, 2, 393233, 65536, 2, 393234, 65536, 2, 393235, 65536, 2, 393236, 65536, 2, 393237, 65536, 2)
+layer_1/name = "background"
+
+[node name="Quit" type="Button" parent="ButtMenu"]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 452.0
+offset_right = 855.0
+offset_bottom = 564.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_xwdc2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_vfyte")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6s48b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8l38f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hwxna")
+theme_override_styles/normal = SubResource("StyleBoxFlat_08678")
+text = "ВЫЙТИ"
+
+[node name="TileMap2" type="TileMap" parent="ButtMenu/Quit"]
+tile_set = SubResource("TileSet_nitjo")
+format = 2
+layer_0/name = "background"
+layer_1/name = "main"
+layer_1/tile_data = PackedInt32Array(1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0, 14, 65536, 0, 15, 65536, 0, 16, 65536, 0, 17, 65536, 0, 18, 65536, 0, 19, 65536, 0, 20, 65536, 0, 21, 65536, 0, 22, 131072, 0, 0, 0, 0, 393216, 0, 2, 393238, 131072, 2, 393237, 65536, 2, 393236, 65536, 2, 393235, 65536, 2, 393234, 65536, 2, 393233, 65536, 2, 393232, 65536, 2, 393231, 65536, 2, 393230, 65536, 2, 393229, 65536, 2, 393228, 65536, 2, 393227, 65536, 2, 393226, 65536, 2, 393225, 65536, 2, 393224, 65536, 2, 393223, 65536, 2, 393222, 65536, 2, 393221, 65536, 2, 393220, 65536, 2, 393219, 65536, 2, 393218, 65536, 2, 393217, 65536, 2, 327680, 0, 1, 262144, 0, 1, 196608, 0, 1, 131072, 0, 1, 65536, 0, 1, 327702, 131072, 1, 262166, 131072, 1, 196630, 131072, 1, 131094, 131072, 1, 65558, 131072, 1)
+
+[node name="NameGame" type="Label" parent="ButtMenu"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 63.0
+offset_right = 917.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("2_xwdc2")
+theme_override_font_sizes/font_size = 45
+text = "NAME GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG" parent="." instance=ExtResource("3_tll0y")]
+script = ExtResource("4_jto4x")
+
+[connection signal="pressed" from="ButtMenu/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ButtMenu/Quit" to="." method="_on_button_2_pressed"]

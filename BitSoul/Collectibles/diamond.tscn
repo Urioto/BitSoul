@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8fbrtnv15cwp"]
+
+[ext_resource type="Texture2D" uid="uid://cprxpf18j21t0" path="res://Tilemap/monochrome_tilemap_transparent_packed.png" id="1_8mra7"]
+[ext_resource type="Script" path="res://Collectibles/diamond.gd" id="1_kgrdx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0i1r"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f4vb"]
+atlas = ExtResource("1_8mra7")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qd11t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f4vb")
+}],
+"loop": true,
+"name": &"Ible",
+"speed": 2.0
+}]
+
+[node name="Diamond" type="Area2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_kgrdx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r0i1r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, 2.38419e-07)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_qd11t")
+animation = &"Ible"
+autoplay = "Ible"
+frame_progress = 0.434419
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
